@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.page-container {
+  padding: 4px 10px;
+}
+
+.frame,
+.images-container {
+  display: flex;
+}
+
+.frame {
+  width: 300px;
+}
+
+.images-container {
+  overflow-x: hidden;
+}

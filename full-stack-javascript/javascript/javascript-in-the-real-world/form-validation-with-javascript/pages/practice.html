@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A little more practice</title>
+    <link href="../styles.css" rel="stylesheet" />
+    <script src="../scripts/practice.js" defer></script>
+  </head>
+  <body>
+    <div class="page-container">
+      <form novalidate>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+
+        <label for="country">Country</label>
+        <input type="text" name="country" id="country" minlength="4" required />
+
+        <label for="postal-code">Postal Code</label>
+        <input
+          type="text"
+          name="postal-code"
+          id="postal-code"
+          minlength="5"
+          maxlength="10"
+          pattern="^[0-9]{5}(?:-[0-9]{4})?$"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          minlength="6"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$"
+          required
+        />
+
+        <label for="password-confirmation">Password Confirmation</label>
+        <input
+          type="password"
+          name="password-confirmation"
+          id="password-confirmation"
+          minlength="6"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
