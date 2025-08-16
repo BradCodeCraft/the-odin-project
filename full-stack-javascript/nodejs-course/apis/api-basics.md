@@ -237,3 +237,84 @@ getting or manipulating without the need to read extra documentation to
 understand what it’s doing.
 
 ### [How to create a RESET API with Express.js in Node.js](https://www.robinwieruch.de/node-express-server-rest-api/)
+
+An Express application is most often used as a backend application in a
+client-server architecture whereas the client could be written in React.js or
+another popular frontend solution and the server could be written in Express.
+Both entities result in a client-server architecture (frontend and backend
+relationship) whereas the backend would be needed for (A) business logic that
+shouldn't be exposed as source code to the frontend application -- otherwise it
+would be accessible in the browser -- or for (B) establishing connections to
+third-party data sources (e.g. database(s)).
+
+However, don't mistake client application always for frontend and server
+application always for backend here. These terms cannot be exchanged that
+easily. Whereas a frontend application is usually something seen in the
+browser, a backend usually performs business logic that shouldn't be exposed in
+a browser and often connects to a database as well.
+
+But, in contrast, the terms client and server are a matter of perspective. A
+backend application (Backend 1) which consumes another backend application
+(Backend 2) becomes a client application (Backend 1) for the server application
+(Backend 2). However, the same backend application (Backend 1) is still the
+server for another client application which is the frontend application
+(Frontend).
+
+If you want to answer the client-server question if someone asks you what role
+an entity plays in a client-server architecture, always ask yourself who
+(server) is serving whom (client) and who (client) consumes whom's (backend)
+functionalities?
+
+#### cUrl for REST APIs
+
+"_cURL [...] is a computer software project providing a library and
+command-line tool for transferring data using various protocols._" Since REST
+is an architecture that uses HTTP, a server that exposes a RESTful API can be
+consumed with cURL, because HTTP is one of the various protocols.
+
+Whether you access your Express application on `http://localhost:3000` in the
+browser or via the command line with cURL, you should see the same result. Both
+tools act as clients whereas the Express application is your server.
+
+#### Express routes: HTTP methods are REST operations
+
+By default cURL will use a HTTP GET method. However, you can specify the HTTP
+method with the `-X` flag (or `--request` flag). Depending on the HTTP method
+you are choosing, you will access different routes of your Express application
+-- which here represent only a single API endpoint with an URI so far.
+
+That's one of the key aspects of REST: It uses HTTP methods to perform
+operations on URI(s). Often these operations are referred to as CRUD operations
+for create, read, update, and delete operations.
+
+#### Express routes: URIs are REST resources
+
+Another important aspect of REST is that every URI acts as a resource.
+
+#### Making sense of REST with Express
+
+#### Application-level Express middleware
+
+Note that all data that comes with the request object's body tag isn't typed
+yet. Everything comes as a JSON string.
+
+```js
+const data = Date.parse(req.body.date);
+const count = Number(req.body.count);
+```
+
+The blueprint for a middleware:
+
+```js
+app.use((req, res, next) => {
+  // do something
+  next();
+});
+```
+
+#### Modular models in Express as data sources
+
+The models folder in an Express application is usually the place where you
+define your data sources.
+
+#### Modular routing with Express router
